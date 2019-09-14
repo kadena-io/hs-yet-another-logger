@@ -129,6 +129,7 @@ data LogLevel
     = Quiet
     | Error
     | Warn
+    | Notice
     | Info
     | Debug
     deriving (Show, Read, Eq, Ord, Enum, Bounded, Typeable, Generic)
@@ -143,6 +144,7 @@ readLogLevel x = case CI.mk x of
     "quiet" → return Quiet
     "error" → return Error
     "warn" → return Warn
+    "notice" → return Notice
     "info" → return Info
     "debug" → return Debug
     e → throwError $ "unexpected log level value: "
@@ -156,6 +158,7 @@ logLevelText
 logLevelText Quiet = "quiet"
 logLevelText Error = "error"
 logLevelText Warn = "warn"
+logLevelText Notice = "notice"
 logLevelText Info = "info"
 logLevelText Debug = "debug"
 
